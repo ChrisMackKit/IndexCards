@@ -1,0 +1,14 @@
+{
+    "topics": [
+        {"topicName": "capitals", "cardsBox1": [
+            {"question": "Was ist die Hauptstadt von Kanada?", "answer": "Ottawa", "stats": []},
+            {"question": "Was ist die Hauptstadt von Bulgarien?", "answer": "Sofia", "stats": []}
+        ]},
+        {"topicName": "rivers", "cardsBox1": [
+            {"question": "Größte Flüsse in Deutschland:", "answer": "Rhein, Main, Oder, Elbe, Mosel, Donau", "stats": []},
+            {"question": "Fluss in München", "answer": "Isar", "stats": []},
+            {"question": "Fluss in Berlin", "answer": "Spree", "stats": []},
+            {"question": "Fluss in Hamburg", "answer": "Elbe", "stats": []}
+        ]}
+    ]
+}
