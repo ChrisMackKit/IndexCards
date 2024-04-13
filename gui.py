@@ -15,7 +15,7 @@ class GUI:
                 
                 self.question = "Choose a topic you want to learn"
                 self.answer = " "
-
+                
                 self.box = 1
                 self.stats = []
                 self.topics = ['capitals', 'rivers']
@@ -26,6 +26,7 @@ class GUI:
                 self.window.geometry("800x400")
                 self.window.title("Index Card Program")
 
+                
                 # Texts and labels
                 self.questionLabel = tk.Label(self.window, text = self.question, font=('Arial', 18))
                 self.questionLabel.pack(padx= 0, pady=20)
@@ -60,7 +61,10 @@ class GUI:
                 self.clicked.set('Choose Topic')
                 self.clicked.trace_add('write', self.callback)
                 self.topicMenu = tk.OptionMenu(self.window, self.clicked, *self.topics)
+                self.topicMenu.config(font=('Arial', 14))
                 self.topicMenu.place(x=80, y= 300)
+                self.menu = self.window.nametowidget(self.topicMenu.menuname)
+                self.menu.config(font=('Arial', 14))
 
                 
                 self.window.mainloop()
@@ -80,13 +84,17 @@ class GUI:
                 #answerLabel.configure(text = answer)
                 #show the answer in the window
                 print("okay")
-                self.answerLabel['text'] = self.answer
+                #self.answerLabel['text'] = self.answer
+                self.answerLabel.destroy()
                 self.answerLabel = tk.Label(self.window, text = self.answer, font=('Arial', 16))
-                self.answerLabel.place(x = 350, y = 200)
+                self.answerLabel.pack(padx = 0, pady = 100)
+                #self.answerLabel.place(x = 350, y = 200)
 
         def correctAnswer(self):
                 #updates stats and goes to next question
                 print("correct")
+                if self.clicked.get() == 'Choose Topic':
+                        return None
                 if len(self.stats) > 4:
                         self.stats.pop(0)
                 self.stats.append(True)
@@ -98,6 +106,8 @@ class GUI:
         def wrongAnswer(self):
                 #updates stats and goes to next question
                 print("wrong")
+                if self.clicked.get() == 'Choose Topic':
+                        return None
                 if len(self.stats) > 4:
                         self.stats.pop(0)
                 self.stats.append(False)
@@ -108,6 +118,7 @@ class GUI:
         
 
         def nextQuestion(self):
+                #self.answerLabel['text'] = ''
                 self.cardIndex += 1
                 if self.cardIndex >= len(self.cardsList):
                         self.cardIndex = 0
