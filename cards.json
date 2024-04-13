@@ -1,14 +1,64 @@
 {
     "topics": [
-        {"topicName": "capitals", "cardsBox1": [
-            {"question": "Was ist die Hauptstadt von Kanada?", "answer": "Ottawa", "stats": []},
-            {"question": "Was ist die Hauptstadt von Bulgarien?", "answer": "Sofia", "stats": []}
-        ]},
-        {"topicName": "rivers", "cardsBox1": [
-            {"question": "Größte Flüsse in Deutschland:", "answer": "Rhein, Main, Oder, Elbe, Mosel, Donau", "stats": []},
-            {"question": "Fluss in München", "answer": "Isar", "stats": []},
-            {"question": "Fluss in Berlin", "answer": "Spree", "stats": []},
-            {"question": "Fluss in Hamburg", "answer": "Elbe", "stats": []}
-        ]}
+        {
+            "topicName": "capitals",
+            "cardsBox1": [
+                {
+                    "question": "Was ist die Hauptstadt von Kanada?",
+                    "answer": "Ottawa",
+                    "stats": []
+                },
+                {
+                    "question": "Was ist die Hauptstadt von Bulgarien?",
+                    "answer": "Sofia",
+                    "stats": []
+                },
+                {
+                    "question": "Was ist die Hauptstadt von Uruguay?",
+                    "answer": "Montevideo",
+                    "stats": []
+                }
+            ]
+        },
+        {
+            "topicName": "rivers",
+            "cardsBox1": [
+                {
+                    "question": "Gr\u00c3\u00b6\u00c3\u0178te Fl\u00c3\u00bcsse in Deutschland:",
+                    "answer": "Rhein, Main, Oder, Elbe, Mosel, Donau",
+                    "stats": []
+                },
+                {
+                    "question": "Fluss in M\u00c3\u00bcnchen",
+                    "answer": "Isar",
+                    "stats": []
+                },
+                {
+                    "question": "Fluss in Berlin",
+                    "answer": "Spree",
+                    "stats": []
+                },
+                {
+                    "question": "Fluss in Hamburg",
+                    "answer": "Elbe",
+                    "stats": []
+                },
+                {
+                    "question": "Test Frage",
+                    "answer": "Test Antwort aus Gui",
+                    "stats": []
+                },
+                {
+                    "question": "Test Frage",
+                    "answer": "Test Antwort aus Gui",
+                    "stats": []
+                },
+                {
+                    "question": "tttt",
+                    "answer": "fgdfgsd",
+                    "stats": []
+                }
+            ]
+        }
     ]
 }
