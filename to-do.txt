@@ -1,0 +1,4 @@
+Stats Anzeige fixen
+Wrong - correct aktuallisiert stats bei Karten
+edit von Karten
+verschiedene Boxen für Karten

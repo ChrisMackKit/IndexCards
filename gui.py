@@ -18,7 +18,7 @@ class GUI:
                 
                 self.box = 1
                 self.stats = []
-                self.topics = ['capitals', 'rivers']
+                self.topics = je.showTopics()
                 
                 self.cardIndex = 0
 
@@ -71,7 +71,13 @@ class GUI:
 
         def callback(self, *args):
                 # if topic is changed, the list of cards changes
-                listOfCards = je.getListOfCards(self.clicked.get(), 'cardsBox1')
+                if len(je.getListOfCards(self.clicked.get(), 'cardsBox1', self.jsonData)) == 0:
+                      self.cardsList = []
+                      self.questionLabel['text'] = 'No Questions in topic'
+                      self.answer = 'no answer'
+                      self.statsBox['text'] = []
+                      return None   
+                listOfCards = je.getListOfCards(self.clicked.get(), 'cardsBox1', self.jsonData)
                 print('Topic: ' + self.clicked.get())
                 print(listOfCards)
                 self.cardsList = listOfCards
@@ -122,6 +128,8 @@ class GUI:
                 self.cardIndex += 1
                 if self.cardIndex >= len(self.cardsList):
                         self.cardIndex = 0
+                if self.cardsList == []:
+                        return None
                 self.questionLabel['text'] = self.cardsList[self.cardIndex][0][0]
                 self.answer = self.cardsList[self.cardIndex][1][0]
                 self.statsBox['text'] = self.cardsList[self.cardIndex][2][0]
@@ -130,6 +138,7 @@ class GUI:
 
         def addTopic(self):
                 #adds new topic to the JSON
+                print(f"old topic list: {je.showTopics(self.jsonData)}")
                 print("new topic created")
                 self.addTopicWindow = tk.Toplevel(self.window)
                 self.addTopicWindow.title('Add New Topic')
@@ -145,7 +154,20 @@ class GUI:
             
         def addTopic2(self):
                 topicName = self.topicText.get('1.0', 'end -1c')
+                
                 print('topic added: ' + topicName)
+                je.addTopic(topicName, self.jsonData)
+                print(f"new topic list: {je.showTopics(self.jsonData)}")
+                je.saveJSON("cards.json", self.jsonData)
+                self.topics = je.showTopics(self.jsonData)
+                print(self.topics)
+                
+                updatingMenu = self.topicMenu["menu"]
+                updatingMenu.delete(0, "end")
+                for string in self.topics:
+                        updatingMenu.add_command(label=string, 
+                             command=lambda value=string: self.clicked.set(value))
+
 
 
         def addCard(self):
@@ -170,6 +192,8 @@ class GUI:
                 self.topicMenu2.place(x=20, y= 130)
                 self.addTopicButton = tk.Button(self.addCardWindow, text = "add topic", command = self.addCard2, font=('Arial', 18))
                 self.addTopicButton.place(x= 150, y=130, height=30, width=200)
+                #
+                
             
         def addCard2(self):
                 cardQuestion = self.cardQuestion.get('1.0', 'end -1c')
@@ -181,5 +205,9 @@ class GUI:
                         print('card added. Question: ' + cardQuestion + ' Answer: ' + cardAnswer + ' Topic: ' + topicOfCard)
                         self.jsonData = je.addCardToTopic(topicOfCard, cardQuestion, cardAnswer, self.jsonData)
                         je.saveJSON("cards.json", self.jsonData)
+                        print(je.getListOfCards(self.clicked2.get(), 'cardsBox1', self.jsonData))
+                        
+        def updateJSONcontent(self, content='cards.json'):
+                self.jsonData = je.openJSON(content)
         
 GUI()

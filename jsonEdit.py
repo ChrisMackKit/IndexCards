@@ -11,7 +11,7 @@ def openJSON(jsonFile='cards.json'):
 # jsonFile is the name of the file to overwrite or create, content is the json (dic) that is to be saved
 def saveJSON(jsonFile='cards.json', content=openJSON("cards.json")):
     with open(jsonFile, 'w') as f:
-        json.dump(content, f, indent=4)
+        json.dump(content, f, indent=4, ensure_ascii=False)
 
 
 def showTopics(content = openJSON("cards.json")):
@@ -59,6 +59,13 @@ def addCardToTopic(topic, question, answer, content = openJSON("cards.json")):
             i["cardsBox1"].append(newDic)
     return content
 
+def addTopic(topic, content = openJSON("cards.json")):
+    #content["topics"]
+    newDict = {"topicName": topic, "cardsBox1": []}    
+    content = content['topics'].append(newDict)
+    return content
+    
+
 #type: 'dict'
 content = openJSON("cards.json")
 
@@ -67,3 +74,7 @@ content = openJSON("cards.json")
 # saveJSON("cards2.json", content)
 #print(getListOfCards("rivers", "cardsBox1"))
 #saveJSON("cards.json", addCardToTopic('rivers', 'test frage', 'test antwort'))
+#print(f"old topics: {showTopics(content)}")
+#addTopic('TestTopic', content)
+#print(f"new Topics: {showTopics(content)}")
+#saveJSON("cards.json", content)

@@ -24,12 +24,12 @@
             "topicName": "rivers",
             "cardsBox1": [
                 {
-                    "question": "Gr\u00c3\u00b6\u00c3\u0178te Fl\u00c3\u00bcsse in Deutschland:",
+                    "question": "Größte Flüsse in Deutschland:",
                     "answer": "Rhein, Main, Oder, Elbe, Mosel, Donau",
                     "stats": []
                 },
                 {
-                    "question": "Fluss in M\u00c3\u00bcnchen",
+                    "question": "Fluss in München",
                     "answer": "Isar",
                     "stats": []
                 },
@@ -42,20 +42,15 @@
                     "question": "Fluss in Hamburg",
                     "answer": "Elbe",
                     "stats": []
-                },
+                }
+            ]
+        },
+        {
+            "topicName": "Zum testen",
+            "cardsBox1": [
                 {
-                    "question": "Test Frage",
-                    "answer": "Test Antwort aus Gui",
-                    "stats": []
-                },
-                {
-                    "question": "Test Frage",
-                    "answer": "Test Antwort aus Gui",
-                    "stats": []
-                },
-                {
-                    "question": "tttt",
-                    "answer": "fgdfgsd",
+                    "question": "t",
+                    "answer": "t",
                     "stats": []
                 }
             ]
