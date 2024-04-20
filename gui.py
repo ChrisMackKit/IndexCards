@@ -55,6 +55,9 @@ class GUI:
                 
                 self.addCard = tk.Button(self.window, text = "add new card", command = self.addCard, font=('Arial', 18))
                 self.addCard.place(x= 300, y= 150, height=30, width=200)
+                
+                self.editCardButton = tk.Button(self.window, text = "edit current card", command = self.editCard, font=('Arial', 18))
+                self.editCardButton.place(x= 510, y= 150, height=30, width=200)
 
                 # Drop down menu
                 self.clicked = tk.StringVar()
@@ -190,7 +193,7 @@ class GUI:
                 self.clicked2.set('Choose Topic')
                 self.topicMenu2 = tk.OptionMenu(self.addCardWindow, self.clicked2, *self.topics)
                 self.topicMenu2.place(x=20, y= 130)
-                self.addTopicButton = tk.Button(self.addCardWindow, text = "add topic", command = self.addCard2, font=('Arial', 18))
+                self.addTopicButton = tk.Button(self.addCardWindow, text = "add card", command = self.addCard2, font=('Arial', 18))
                 self.addTopicButton.place(x= 150, y=130, height=30, width=200)
                 #
                 
@@ -206,6 +209,48 @@ class GUI:
                         self.jsonData = je.addCardToTopic(topicOfCard, cardQuestion, cardAnswer, self.jsonData)
                         je.saveJSON("cards.json", self.jsonData)
                         print(je.getListOfCards(self.clicked2.get(), 'cardsBox1', self.jsonData))
+                        
+                        
+        def editCard(self):
+                #adds new card to a topic
+                print("new card created")
+                self.editCardWindow = tk.Toplevel(self.window)
+                self.editCardWindow.title('Edit Card')
+                self.editCardWindow.geometry('500x210')
+                
+                self.currentQuestionLabel = tk.Label(self.editCardWindow, text =f'Current Question: {self.questionLabel["text"]}')
+                self.currentQuestionLabel.pack()
+                self.currentAnswerLabel = tk.Label(self.editCardWindow, text =f'Current Answer: {self.answer}')
+                self.currentAnswerLabel.pack()
+                self.addCardQuestion = tk.Label(self.editCardWindow, text ='Enter new question: ')
+                self.addCardQuestion.pack()
+                self.newCardQuestion = tk.Text(self.editCardWindow, height = 1)
+                self.newCardQuestion.pack(padx = 0, pady = 10)
+                self.addCardAnswerLabel = tk.Label(self.editCardWindow, text ='Enter new answer: ')
+                self.addCardAnswerLabel.pack()
+                self.newCardAnswer = tk.Text(self.editCardWindow, height = 1)
+                self.newCardAnswer.pack()
+                #self.clicked3 = tk.StringVar()
+                #self.clicked3.set('Choose Topic')
+                #self.topicMenu2 = tk.OptionMenu(self.editCardWindow, self.clicked3, *self.topics)
+                #self.topicMenu2.place(x=20, y= 170)
+                self.addTopicButton = tk.Button(self.editCardWindow, text = "edit card", command = self.editCard2, font=('Arial', 18))
+                self.addTopicButton.place(x= 150, y=170, height=30, width=200)
+                
+                
+        # muss noch gefixt werden, macht die JSON kaputt aktuell 
+        def editCard2(self):
+                cardQuestion = self.newCardQuestion.get('1.0', 'end -1c')
+                cardAnswer = self.newCardAnswer.get('1.0', 'end -1c')
+                cardStats = self.stats
+                topicOfCard = self.clicked.get()
+                if topicOfCard == 'Choose Topic':
+                        print('You have to pick a topic')
+                else:
+                        print('card edit. Question: ' + cardQuestion + ' Answer: ' + cardAnswer + ' Topic: ' + topicOfCard + ' stats: ' + str(self.stats))
+                        self.jsonData = je.editCard(topicOfCard, cardQuestion, cardAnswer, cardStats, self.cardIndex, self.jsonData)
+                        je.saveJSON("cards.json", self.jsonData)
+                        print(je.getListOfCards(self.clicked.get(), 'cardsBox1', self.jsonData))
                         
         def updateJSONcontent(self, content='cards.json'):
                 self.jsonData = je.openJSON(content)

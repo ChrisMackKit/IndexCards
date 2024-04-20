@@ -24,9 +24,15 @@
             "topicName": "rivers",
             "cardsBox1": [
                 {
-                    "question": "Größte Flüsse in Deutschland:",
+                    "question": "Gr��te Fl�sse in Deutschland",
                     "answer": "Rhein, Main, Oder, Elbe, Mosel, Donau",
-                    "stats": []
+                    "stats": [
+                        true,
+                        false,
+                        false,
+                        true,
+                        true
+                    ]
                 },
                 {
                     "question": "Fluss in München",
@@ -49,9 +55,26 @@
             "topicName": "Zum testen",
             "cardsBox1": [
                 {
-                    "question": "t",
-                    "answer": "t",
-                    "stats": []
+                    "question": "aa",
+                    "answer": "aa",
+                    "stats": [
+                        true,
+                        false,
+                        false,
+                        true,
+                        true
+                    ]
+                },
+                {
+                    "question": "aa",
+                    "answer": "bb",
+                    "stats": [
+                        true,
+                        false,
+                        false,
+                        true,
+                        true
+                    ]
                 }
             ]
         }

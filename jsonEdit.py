@@ -64,11 +64,21 @@ def addTopic(topic, content = openJSON("cards.json")):
     newDict = {"topicName": topic, "cardsBox1": []}    
     content = content['topics'].append(newDict)
     return content
+
+def editCard(topic, question, answer, stats, index, content = openJSON("cards.json")):
+    newDic = {"question": question, "answer": answer, "stats": stats}
+    for i in content['topics']:
+        if i["topicName"] == topic:
+            i['cardsBox1'][index] = newDic
+            #i['cardsBox1'][index]["question"] = question
+            return content
+    
+    
     
 
 #type: 'dict'
 content = openJSON("cards.json")
-
+#saveJSON("cards.json", (editCard("Zum testen", "new Question edit", "new answer edit", [True], 0)))
 # addCardToTopic(content, "capitals", "Was ist die Hauptstadt von Iran?", "Teheran")
 # print(content)
 # saveJSON("cards2.json", content)
